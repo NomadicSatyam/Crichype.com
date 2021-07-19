@@ -3,7 +3,7 @@ import {db,storage} from '../../Pages/loginpage/firebase';
 import "./write.css";
 
 export default function Write() {
-  const [fileUrl, setFileUrl] =useState(null);
+  const [fileUrl, setFileUrl] =useState("https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [loader, setLoader] = useState(false);
@@ -47,7 +47,7 @@ const submit=(e)=>{
     <div className="write">
       <img
         className="writeImg"
-        src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        src={fileUrl}
         alt=""
       />
       <form className="writeForm" onSubmit={submit}>
