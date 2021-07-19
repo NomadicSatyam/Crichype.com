@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 import "./topbar.css";
 import "./Hoverable__Dropdown.css";
 import {useStateValue} from "../stateprovider/Stateprovider";
@@ -6,13 +6,17 @@ import { auth } from "../../Pages/loginpage/firebase";
 
 
 export default function Topbar() {
-  
+  const history = useHistory();
   const [{user},dispatch]=useStateValue();
   const handleAuthenticaton = () => {
     if (user) {
-      auth.signOut();
+      auth.signOut().then(history.push('/'));
     }
   }
+  
+  
+  
+
   return (
     <div className="top" >
       <div className="topLeft">
@@ -73,7 +77,7 @@ export default function Topbar() {
             
             <img
               className="topImg"
-              src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src="User1.png"
               alt=""
               
             />
