@@ -24,12 +24,12 @@ export default function Blog({b}) {
           </span>
         </div>
         <span className="blogTitle">
-          <Link to={`/blog/${""}`} className="link">
+          <Link to={`/blog/${b.title}`} className="link">
             {b.title}
           </Link>
         </span>
         <hr />
-        <span className="blogDate">1 hour ago</span>
+        <span className="blogDate">{b.cdatetime}</span>
       </div>
       <p className="blogDesc">
         {b.description}

@@ -7,8 +7,8 @@ export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const fetchBlogs=async()=>{
 
-    const response=db.collection('blogs');
-    const data=await response.get();
+  const response=db.collection('blogs');
+  const data=await response.get();
     
     console.log(data);
     setBlogs(
@@ -16,9 +16,7 @@ export default function Blogs() {
         return doc.data();
       })
     ); }
-    {/*data.docs.map(item=>{
-     setBlogs( [...blogs,item.data()]);
-    }) }*/}
+    
   
   useEffect(() =>{  fetchBlogs(); } , []);
   console.log(blogs);

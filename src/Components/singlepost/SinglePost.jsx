@@ -12,7 +12,7 @@ export default function SinglePost({n}) {
           alt=""
         />
         <h1 className="singlePostTitle">
-        {n} Satyam
+        {n} 
           <div className="singlePostEdit">
             <i className="singlePostIcon far fa-edit"></i>
             <i className="singlePostIcon far fa-trash-alt"></i>

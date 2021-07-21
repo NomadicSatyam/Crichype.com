@@ -6,12 +6,13 @@ export default function Write() {
   const [fileUrl, setFileUrl] =useState("https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [cdatetime,setCdatetime]=useState(`${Date().toLocaleString()}`);
   const [loader, setLoader] = useState(false);
 
   const onFileChange = async (e) => {
     const file = e.target.files[0];
     const storageRef =storage.ref();
-    const fileRef = storageRef.child(file.name);
+    const fileRef = storageRef.child('Blogs/'+file.name);
     await fileRef.put(file);
     setFileUrl(await fileRef.getDownloadURL());
   };
@@ -25,6 +26,7 @@ const submit=(e)=>{
        title:title,
        description:description,
        fileUrl:fileUrl,
+       cdatetime:cdatetime,
       })
       .then(() => {
         setLoader(false);
