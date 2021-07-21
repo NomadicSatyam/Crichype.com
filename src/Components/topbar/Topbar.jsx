@@ -1,22 +1,23 @@
+import {useState} from "react";
 import { Link ,useHistory} from "react-router-dom";
 import "./topbar.css";
 import "./Hoverable__Dropdown.css";
 import {useStateValue} from "../stateprovider/Stateprovider";
-import { auth } from "../../Pages/loginpage/firebase";
+import { auth,db } from "../../Pages/loginpage/firebase";
 
 
 export default function Topbar() {
   const history = useHistory();
   const [{user},dispatch]=useStateValue();
+  const [profiledata,setProfiledata]=useState("User1.png");
   const handleAuthenticaton = () => {
     if (user) {
       auth.signOut().then(history.push('/'));
     }
   }
+  if(user)
+  {db.collection("users").doc(user.uid).get().then(d=>setProfiledata(d.data()));}
   
-  
-  
-
   return (
     <div className="top" >
       <div className="topLeft">
@@ -77,7 +78,7 @@ export default function Topbar() {
             
             <img
               className="topImg"
-              src="User1.png"
+              src={profiledata.fileUrl}
               alt=""
               
             />

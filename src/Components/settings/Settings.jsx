@@ -27,8 +27,9 @@ export default function Settings() {
     if(user)
     {alert('please confirm to delete')&&user.delete().then(()=>{alert('Deleated')}).catch((error)=>{alert(error)})}
   }
- 
-
+  
+  console.log(user.uid);
+  
 
   const submit=(e)=>{
     e.preventDefault();
@@ -37,22 +38,21 @@ export default function Settings() {
     db.collection("users").doc(user.uid)
       .set({
        username:username,
-       email:email,
-       password:password,
        fileUrl:fileUrl,
       })
       .then(() => {
         setLoader(false);
         alert("Your profile has been successfuly updated👍");
-      }).then(history.push('/'))
+      }).then(history.push('/setting'))
       .catch((error) => {
         alert(error.message);
         setLoader(false);
       });
-    setFileUrl(null);
-    setUserName("");
-    setEmail("");
-    setPassword("");
+    
+    setFileUrl(`${fileUrl}`);
+    setUserName(`${username}`);
+    setEmail(`${user.email}`);
+    setPassword(`${user.password}`);
     
   };
 
