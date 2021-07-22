@@ -1,8 +1,8 @@
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./singlepost.css";
+import "./singleblogpost.css";
 
-export default function SinglePost({n}) {
+export default function SingleBlogPost({n}) {
   const [pic,setpic]=useState("https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
   console.log(n);
   return (
@@ -10,11 +10,11 @@ export default function SinglePost({n}) {
       <div className="singlePostWrapper">
         <img
           className="singlePostImg"
-          src={pic}
+          src={n?n.fileUrl:pic}
           alt=""
         />
         <h1 className="singlePostTitle">
-        {n} 
+        {n.title} 
           <div className="singlePostEdit">
             <i className="singlePostIcon far fa-edit"></i>
             <i className="singlePostIcon far fa-trash-alt"></i>
@@ -29,10 +29,10 @@ export default function SinglePost({n}) {
               </Link>
             </b>
           </span>
-          <span>I hours before</span>
+          <span>{n.cdatetime}</span>
         </div>
         <p className="singlePostDesc">
-          {n}
+          {n.description}
           <br />
           <br />
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error

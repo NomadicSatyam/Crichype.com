@@ -5,6 +5,7 @@ import Settings from './Components/settings/Settings';
 import Homepage from './Pages/homepage/Homepage';
 import Errorpage from './Pages/errorpage/Errorpage';
 import Singlepage from './Pages/singlepage/Singlepage';
+import Singleblogpage from './Pages/singleblogpage/Singleblogpage';
 import Blogpage from './Pages/blogpage/Blogpage';
 import Newspage from './Pages/newspage/Newspage';
 import Videopage from './Pages/videopage/Videopage';
@@ -13,7 +14,7 @@ import Write from './Components/write/Write';
 import SingleVideopage from './Pages/singlevideopage/SingleVideoPage.js';
 import {auth} from "./Pages/loginpage/firebase";
 import {BrowserRouter,Route,Link,Switch} from "react-router-dom";
-import {useStateValue} from './Components/stateprovider/Stateprovider';
+import {useStateValue,BlogProvider} from './Components/stateprovider/Stateprovider';
 
 
 
@@ -74,7 +75,7 @@ function App() {
               <Singlepage  />
             </Route>
             <Route path="/blog/:id" exact>
-              <Singlepage  />
+              <Singleblogpage  />
             </Route>
             <Route path="/news/:id" exact>
               <Singlepage  />
@@ -87,6 +88,7 @@ function App() {
             </Route>
           </Switch> 
       </BrowserRouter>
+      
     </div>
   );
 }
