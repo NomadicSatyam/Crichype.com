@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import "./news.css";
+import moment from 'moment';
 
-export default function News({img}) {
+export default function News({n}) {
   return (
     <div className="news">
       <img
         className="newsImg"
-        src={img}
+        src={n.featuredimage}
         alt=""
       />
       <div className="newsInfo">
@@ -23,18 +24,15 @@ export default function News({img}) {
           </span>
         </div>
         <span className="newsTitle">
-          <Link to="/news/abc" className="link">
-            Lorem ipsum dolor sit amet
+          <Link to={`/news/${n.newsid}`} className="link">
+            {n.title}
           </Link>
         </span>
         <hr />
-        <span className="newsDate">1 hour ago</span>
+        <span className="newsDate">{moment(n.created_at).format('LLL')}</span>
       </div>
       <p className="newsDesc">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-        officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-        fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-        atque, exercitationem quibusdam, reiciendis odio laboriosam?
+        {n.description}
       </p>
     </div>
   );

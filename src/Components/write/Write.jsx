@@ -1,8 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import {db,storage} from '../../Pages/loginpage/firebase';
+import {useStateValue} from "../stateprovider/Stateprovider";
 import "./write.css";
 
 export default function Write() {
+  const [{user},dispatch]=useStateValue();
   const [fileUrl, setFileUrl] =useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -27,6 +29,7 @@ const submit=(e)=>{
        description:description,
        fileUrl:fileUrl,
        cdatetime:cdatetime,
+       
       })
       .then(() => {
         setLoader(false);
@@ -41,7 +44,8 @@ const submit=(e)=>{
     setDescription("");
     
   };
-
+  console.log(user.uid);
+  
   
     
 

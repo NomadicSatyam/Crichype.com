@@ -1,5 +1,7 @@
 import React ,{createContext,useContext,useReducer,useState,useEffect} from 'react';
 import {db} from "../../Pages/loginpage/firebase";
+import {getNews} from "../../API/Newsapi.js";
+
 export const StateContext=createContext();
 
 export const StateProvider = ({ reducer, initialState, children }) => (
@@ -39,3 +41,26 @@ export const BlogProvider = ({children}) => {
 }
 
 export const useBlogValue=()=>useContext(BlogContext);
+
+export const NewsContext =createContext();
+
+export const NewsProvider = ({children}) => {
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    
+    getNews().then((data)=> {  setNews(data);
+                               console.log("statenews",data);})
+    .catch((error)=> alert(error));
+
+  }, []);
+  console.log(news);
+  return(
+    <>
+    <NewsContext.Provider value={news}>
+     {children}
+    </NewsContext.Provider>
+    </>
+  );
+}
+
+export const useNewsValue=()=>useContext(NewsContext);

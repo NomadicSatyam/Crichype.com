@@ -5,12 +5,16 @@ import Settings from './Components/settings/Settings';
 import Homepage from './Pages/homepage/Homepage';
 import Errorpage from './Pages/errorpage/Errorpage';
 import Singlepage from './Pages/singlepage/Singlepage';
+import Singlenewspage from './Pages/singlenewspage/Singlenewspage.js';
 import Singleblogpage from './Pages/singleblogpage/Singleblogpage';
 import Blogpage from './Pages/blogpage/Blogpage';
 import Newspage from './Pages/newspage/Newspage';
 import Videopage from './Pages/videopage/Videopage';
 import Loginpage from './Pages/loginpage/Loginpage';
 import Write from './Components/write/Write';
+import NewsUpdate from './Components/newsupdate/Newsupdate';
+import Insert from './Components/insertnews/Insertnews';
+import Logout from './Components/logout/Logout.js';
 import SingleVideopage from './Pages/singlevideopage/SingleVideoPage.js';
 import {auth} from "./Pages/loginpage/firebase";
 import {BrowserRouter,Route,Link,Switch} from "react-router-dom";
@@ -68,8 +72,14 @@ function App() {
             <Route path="/write" exact>
               {user ? <Write /> : <Loginpage />}
             </Route>
+            <Route path="/insert" exact>
+              {user ? <Insert /> : <Loginpage />}
+            </Route>
             <Route path="/setting" exact>
               <Settings/>
+            </Route>
+            <Route path="/myprofile" exact>
+              <Logout/>
             </Route>
             <Route path="/post/:id" exact>
               <Singlepage  />
@@ -78,8 +88,10 @@ function App() {
               <Singleblogpage  />
             </Route>
             <Route path="/news/:id" exact>
-              <Singlepage  />
+              <Singlenewspage  />
             </Route>
+            <Route path="/update/:id" component={NewsUpdate} exact>
+             </Route>
             <Route path="/video/:id" exact>
               <SingleVideopage  />
             </Route>

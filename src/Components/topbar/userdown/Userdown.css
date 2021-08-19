@@ -1,0 +1,38 @@
+.userdown-menu {
+    
+    width: 200px;
+    position: absolute;
+    top: 60px;
+    list-style: none;
+    text-align: start;
+  }
+  
+  .userdown-menu li {
+    background: #f1f1f1;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    
+  }
+  
+  .userdown-menu li:hover {
+    background: #ddd;
+  }
+  
+  .userdown-menu.clicked {
+    display: none;
+  }
+  
+  .userdown-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    padding: 16px;
+  }
+  
+  @media screen and (max-width: 960px) {
+    .fa-caret-down {
+      display: none;
+    }
+  }

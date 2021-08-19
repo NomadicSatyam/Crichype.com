@@ -12,6 +12,7 @@ export default function Blogpage() {
   return (
     <div className="single">
       <Blogs />
+      <Sidebar/>
       
      
     </div>
