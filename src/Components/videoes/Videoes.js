@@ -1,7 +1,7 @@
 import Video from "../video/Video";
 import "./videoes.css";
 
-export default function videoes() {
+export default function Videoes() {
   return (
     <div className="videoes">
       <Video img="" />
