@@ -19,6 +19,8 @@ import SingleVideopage from './Pages/singlevideopage/SingleVideoPage.js';
 import {auth} from "./Pages/loginpage/firebase";
 import {BrowserRouter,Route,Link,Switch} from "react-router-dom";
 import {useStateValue,BlogProvider} from './Components/stateprovider/Stateprovider';
+import Logout1 from './Components/logout/Logout1';
+import MyProfile from './Components/MyProfile/MyProfile';
 
 
 
@@ -79,7 +81,11 @@ function App() {
               <Settings/>
             </Route>
             <Route path="/myprofile" exact>
-              <Logout/>
+              <MyProfile/>
+            </Route>
+            
+            <Route path="/logout" exact>
+              <Logout1/>
             </Route>
             <Route path="/post/:id" exact>
               <Singlepage  />

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { WriteItems } from './WriteItems';
-import './Writedown.css';
+import { UserItems } from './UserItems';
+import './Userdown.css';
 import { Link } from 'react-router-dom';
 
-function Writedown() {
+function Userdown() {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -12,11 +12,11 @@ function Writedown() {
     <>
       <ul
         onClick={handleClick}
-        className={click ? 'writedown-menu clicked' : 'writedown-menu'}
-        
+        className={click ? 'userdown-menu clicked' : 'userdown-menu'}
       >
-        {WriteItems.map((item, index) => {
-          return (
+      { UserItems.map((item, index) =>
+        {
+          return(
             <li key={index}>
               <Link
                 className={item.cName}
@@ -27,10 +27,11 @@ function Writedown() {
               </Link>
             </li>
           );
-        })}
+        })
+      }
       </ul>
     </>
   );
 }
 
-export default Writedown;
+export default Userdown;
